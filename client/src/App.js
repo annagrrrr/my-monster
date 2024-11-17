@@ -8,6 +8,7 @@ import MonsterDetails from './components/MonsterDetails';
 import MonsterEdit from './components/MonsterEdit';
 import MonsterForm from './components/MonsterForm';
 import Navbar from './components/Navbar';
+import BattlePage from './components/BattlePage';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
           
           {/* Маршрут для формы редактирования монстра */}
           <Route path="/edit/:id" element={<MonsterEdit />} />
+
+          {/* Новый маршрут для страницы битвы */}
+          <Route path="/battle/:id" element={<BattlePage />} />
 
         </Routes>
       </div>
