@@ -1,0 +1,240 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* App.css */
+a, .link {
+  color: #00aced; /* Светло-синий цвет */
+  text-decoration: none; /* Убираем подчеркивание */
+}
+
+a:hover, .link:hover {
+  color: #0094db; /* Цвет при наведении */
+}
+
+/* App.css */
+
+/* Устанавливаем базовые стили для всей страницы */
+body {
+  background-color: #001f3f; /* Темно-синий фон */
+  color: white; /* Цвет текста */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, sans-serif;
+}
+
+/* Контейнер для всего контента приложения */
+.container {
+  max-width: 1200px; /* Ограничиваем ширину на больших экранах */
+  margin: 0 auto; /* Центрируем на экране */
+  padding: 20px; /* Внутренние отступы для всех сторон */
+}
+
+/* Универсальные отступы для заголовков и текста */
+h1, h2, h3, p {
+  margin: 20px 0;
+}
+
+/* Отступы для кнопок и ссылок */
+button, a {
+  margin: 10px 0; /* Внешние отступы для кнопок и ссылок */
+  padding: 10px 15px; /* Внутренние отступы для улучшения кликабельности */
+  color: #00aced; /* Светлый цвет текста ссылок */
+  text-decoration: none; /* Убираем подчеркивание ссылок */
+}
+
+/* Отступы между элементами списка */
+table {
+  width: 100%; /* Таблица занимает всю ширину контейнера */
+  border-collapse: separate;
+  border-spacing: 0 15px; /* Отступы между строками таблицы */
+}
+
+/* Добавление адаптивности для мобильных устройств */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px; /* Уменьшаем внутренние отступы на маленьких экранах */
+  }
+
+  h1, h2, h3, p {
+    margin: 15px 0; /* Уменьшаем внешние отступы для заголовков и текста */
+  }
+}
+
+.delete-button {
+  background-color: #ff4d4f; /* Цвет кнопки */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px; 
+  font-family: Cambria, sans-serif;
+}
+
+.delete-button:hover {
+  background-color: #ff7875; 
+}
+
+.fight-button {
+  background-color: #a85cdb; 
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px; 
+  font-family: Cambria, sans-serif;
+}
+
+.fight-button:hover {
+  background-color: #be77ed; 
+}
+
+/* Контейнер для кнопок */
+.button-container {
+  display: flex;
+  justify-content: center; /* Центрируем кнопки по горизонтали */
+  padding: 20px; /* Внутренние отступы вокруг кнопок */
+  background-color: #001f3f; /* Темно-синий фон */
+  border-radius: 8px; /* Округляем углы */
+  margin-bottom: 20px; /* Отступ снизу для разделения с остальным контентом */
+}
+
+/* Список кнопок */
+.nav-list {
+  list-style-type: none; /* Убираем точки у списка */
+  display: flex;
+  gap: 10px; /* Расстояние между кнопками */
+  padding: 0;
+  margin: 0;
+}
+
+/* Стиль кнопок */
+.nav-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  color: #001f3f;
+  border: 2px solid #001f3f;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #001f3f;
+  color: white;
+}
+
+/* Общий стиль формы */
+.monster-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1d4b74;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Cambria, serif; 
+}
+
+/* Стили для полей ввода */
+.form-input, .form-select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: Cambria, serif;
+}
+
+/* Стиль для выпадающих меню */
+.form-select {
+  font-size: 16px;
+  font-family: Cambria, serif;
+}
+
+/* Кнопка отправки формы */
+.form-button {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0074D9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-family: Cambria, serif;
+}
+
+.form-button:hover {
+  background-color: #005bb5;
+}
+
+.monster-name {
+  font-weight: bold;
+}
+
+
+.monster-row {
+  border-radius: 8px; /* Округленные углы */
+  padding: 15px; /* Внутренние отступы для создания пространства между рамкой и текстом */
+  margin-bottom: 10px; /* Внешний отступ между строками */
+}
+
+.monster-row td {
+  padding: 10px; /* Отступы внутри каждой ячейки */
+}
+
+.monster-row, .monster-row td, .button-link, button {
+  font-family: Cambria, sans-serif;
+}
