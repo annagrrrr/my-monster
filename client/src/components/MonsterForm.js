@@ -1,4 +1,3 @@
-// MonsterForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -9,7 +8,7 @@ function MonsterForm() {
     name: '',
     description: '',
     powerLevel: '',
-    rarity: 'common', // Начальное значение для выпадающего меню
+    rarity: 'common',
     health: 100,
     minAttack: 1,
     maxAttack: 10,

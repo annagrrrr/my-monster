@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getMonsters, deleteMonster } from '../services/api';
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 
 const MonsterList = () => {
@@ -35,15 +36,15 @@ const MonsterList = () => {
   const getBackgroundColor = (rarity) => {
     switch (rarity) {
       case 'common':
-        return '#1d4b74'; // Светло-синий для common
+        return '#1d4b74';
       case 'rare':
-        return '#3f734d'; // Светло-зеленый для rare
+        return '#3f734d';
       case 'epic':
-        return '#703f73'; // Светло-фиолетовый для epic
+        return '#703f73';
       case 'legendary':
-        return '#b59a48'; // Оранжевый для legendary
+        return '#b59a48';
       default:
-        return '#1d4b74'; // По умолчанию светло-синий
+        return '#1d4b74';
     }
   };
 

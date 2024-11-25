@@ -1,8 +1,7 @@
-// Импортируем необходимые библиотеки и компоненты
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
 
-// Импортируем компоненты
 import MonsterList from './components/MonsterList';
 import MonsterDetails from './components/MonsterDetails';
 import MonsterEdit from './components/MonsterEdit';

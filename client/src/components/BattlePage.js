@@ -1,4 +1,3 @@
-// BattlePage.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMonsterById, getRandomMonsterInRange, getMonsters, markMonsterAsAcquired } from '../services/api';
@@ -40,14 +39,12 @@ const BattlePage = () => {
     while (player.health > 0 && opponent.health > 0) {
       log.push(battleTurn(attacker, defender));
 
-      // Проверяем, жив ли защитник после удара
       if (defender.health <= 0) {
-        setWinner(attacker); // Устанавливаем победителя
-        await handleWin(attacker); // Вызываем функцию обработки победы
+        setWinner(attacker);
+        await handleWin(attacker);
         break;
       }
 
-      // Меняем атакующего и защитника местами
       [attacker, defender] = [defender, attacker];
     }
 
@@ -63,8 +60,6 @@ const BattlePage = () => {
     return 'legendary';
   };
 
-  // Функция для обработки победы
-  // BattlePage.js
 const handleWin = async (winner) => {
   try {
     // Проверяем, является ли победителем монстр игрока
@@ -95,7 +90,6 @@ const handleWin = async (winner) => {
           }
         }
 
-        // Помечаем нового монстра как приобретенного
         await markMonsterAsAcquired(newMonster._id);
         alert(`Вы получили нового монстра: ${newMonster.name}!`);
       } else {

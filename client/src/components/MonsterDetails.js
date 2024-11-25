@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMonsterById } from '../services/api'; // Убедитесь, что вы импортируете только нужные функции
+import { getMonsterById } from '../services/api';
 
 const MonsterDetails = () => {
   const { id } = useParams();
