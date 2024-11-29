@@ -1,4 +1,4 @@
-const Monster = require('../models/Monster');
+/*const Monster = require('../models/Monster');
 
 exports.getRandomOpponent = async (req, res) => {
     try {
@@ -21,13 +21,12 @@ const getRandomDamage = (min, max) => Math.floor(Math.random() * (max - min + 1)
 
 exports.battle = async (req, res) => {
     try {
-        const playerMonster = req.body.playerMonster;  // Данные монстра игрока
-        const opponentMonster = req.body.opponentMonster; // Данные противника
+        const playerMonster = req.body.playerMonster;
+        const opponentMonster = req.body.opponentMonster;
 
         let playerHealth = playerMonster.health;
         let opponentHealth = opponentMonster.health;
 
-        // Бой проходит по очереди, пока здоровье одного из монстров не достигнет 0
         while (playerHealth > 0 && opponentHealth > 0) {
             // Ход игрока
             const playerDamage = getRandomDamage(playerMonster.minAttack, playerMonster.maxAttack);
@@ -35,7 +34,7 @@ exports.battle = async (req, res) => {
 
             // Проверка победы игрока
             if (opponentHealth <= 0) {
-                const rewardMonster = await Monster.aggregate([{ $sample: { size: 1 } }]); // Выдача случайного монстра
+                const rewardMonster = await Monster.aggregate([{ $sample: { size: 1 } }]);
                 return res.json({ result: 'win', reward: rewardMonster[0] });
             }
 
@@ -52,3 +51,4 @@ exports.battle = async (req, res) => {
         res.status(500).json({ message: 'Error during battle', error });
     }
 };
+*/

@@ -1,4 +1,3 @@
-// MonsterList.js
 import React, { useEffect, useState } from 'react';
 import { getMonsters, deleteMonster } from '../services/api';
 import { Link } from 'react-router-dom';

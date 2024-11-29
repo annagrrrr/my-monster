@@ -51,7 +51,7 @@ const BattlePage = () => {
     setBattleLog(log);
   };
 
-  // Функция для получения случайной редкости на основе вероятности
+
   const getRarityByChance = () => {
     const roll = Math.floor(Math.random() * 100);
     if (roll < 70) return 'common';
@@ -62,28 +62,21 @@ const BattlePage = () => {
 
 const handleWin = async (winner) => {
   try {
-    // Проверяем, является ли победителем монстр игрока
     if (winner._id === playerMonster._id) {
       const allMonsters = await getMonsters();
-
-      // Фильтруем монстров, которые еще не приобретены
       const unacquiredMonsters = allMonsters.filter(monster => !monster.acquired);
 
       if (unacquiredMonsters.length > 0) {
         let newMonster = null;
 
-        // Ролл до тех пор, пока не выпадет уникальный монстр
         while (!newMonster) {
           const rarity = getRarityByChance();
 
-          // Фильтруем монстров по редкости
           const monstersOfRarity = unacquiredMonsters.filter(monster => monster.rarity === rarity);
 
           if (monstersOfRarity.length > 0) {
             const randomIndex = Math.floor(Math.random() * monstersOfRarity.length);
             const potentialMonster = monstersOfRarity[randomIndex];
-
-            // Проверяем, есть ли этот потенциальный монстр в unacquiredMonsters
             if (!playerMonster || playerMonster._id !== potentialMonster._id) {
               newMonster = potentialMonster;
             }

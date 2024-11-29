@@ -12,23 +12,15 @@ import BattlePage from './components/BattlePage';
 function App() {
   return (
     <Router>
-      <Navbar /> {/* Добавляем навигационное меню */}
+      <Navbar /> {}
       
-      <div className="container"> {/* Оборачиваем Routes в контейнер */}
+      <div className="container">
         <Routes>
-          {/* Маршрут для главной страницы со списком монстров */}
           <Route path="/" element={<MonsterList />} />
           
-          {/* Маршрут для страницы с деталями монстра */}
           <Route path="/monster/:id" element={<MonsterDetails />} />
-
-          {/* Маршрут для формы создания монстра */}
           <Route path="/create" element={<MonsterForm />} />
-          
-          {/* Маршрут для формы редактирования монстра */}
           <Route path="/edit/:id" element={<MonsterEdit />} />
-
-          {/* Новый маршрут для страницы битвы */}
           <Route path="/battle/:id" element={<BattlePage />} />
 
         </Routes>
