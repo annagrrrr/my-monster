@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// Создание экземпляра axios с базовым URL
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api', // Измените на ваш URL API
+    baseURL: 'http://localhost:5000/api',
 });
 
 const BATTLE_URL = 'http://localhost:5000/api/battle';
