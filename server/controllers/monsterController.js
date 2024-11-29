@@ -19,7 +19,7 @@ exports.markMonsterAsAcquired = async (req, res) => {
     res.status(500).json({ message: "Ошибка при обновлении монстра", error });
   }
 };
-// Получить список монстров
+
 exports.getMonsters = async (req, res) => {
   try {
     const monsters = await Monster.find();
@@ -29,7 +29,7 @@ exports.getMonsters = async (req, res) => {
   }
 };
 
-// Получить одного монстра по ID
+
 exports.getMonster = async (req, res) => {
   try {
     const monster = await Monster.findById(req.params.id);
@@ -39,8 +39,9 @@ exports.getMonster = async (req, res) => {
     res.status(500).json({ message: 'Error fetching monster' });
   }
 };
+
 exports.createMonster = async (req, res) => {
-  console.log('Request body:', req.body); // Логируем тело запроса
+  console.log('Request body:', req.body);
   try {
     const newMonster = new Monster({
       name: req.body.name,
@@ -51,15 +52,15 @@ exports.createMonster = async (req, res) => {
     });
 
     const savedMonster = await newMonster.save();
-    console.log('Monster created successfully:', savedMonster); // Лог успешного создания монстра
+    console.log('Monster created successfully:', savedMonster);
     res.status(201).json(savedMonster);
   } catch (error) {
-    console.error('Error details:', error); // Подробный лог ошибки
+    console.error('Error details:', error);
     res.status(500).json({ message: 'Error creating monster', error: error.message });
   }
 };
 
-// Обновить монстра по ID
+
 exports.updateMonster = async (req, res) => {
   try {
     const { name, description, powerLevel, rarity, abilities } = req.body;
@@ -75,7 +76,7 @@ exports.updateMonster = async (req, res) => {
   }
 };
 
-// Удалить монстра по ID
+
 exports.deleteMonster = async (req, res) => {
   try {
     const deletedMonster = await Monster.findByIdAndDelete(req.params.id);
