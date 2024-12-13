@@ -28,8 +28,6 @@ exports.getMonsters = async (req, res) => {
     res.status(500).json({ message: 'Error fetching monsters' });
   }
 };
-
-
 exports.getMonster = async (req, res) => {
   try {
     const monster = await Monster.findById(req.params.id);
@@ -39,7 +37,6 @@ exports.getMonster = async (req, res) => {
     res.status(500).json({ message: 'Error fetching monster' });
   }
 };
-
 exports.createMonster = async (req, res) => {
   console.log('Request body:', req.body);
   try {
@@ -60,21 +57,25 @@ exports.createMonster = async (req, res) => {
   }
 };
 
-
 exports.updateMonster = async (req, res) => {
   try {
-    const { name, description, powerLevel, rarity, abilities } = req.body;
+    const { name, description, powerLevel, rarity, health, minAttack, maxAttack, acquired } = req.body;
     const updatedMonster = await Monster.findByIdAndUpdate(
       req.params.id,
-      { name, description, powerLevel, rarity, abilities, updatedAt: Date.now() },
+      { name, description, powerLevel, rarity, health, minAttack, maxAttack, acquired },
       { new: true }
     );
-    if (!updatedMonster) return res.status(404).json({ message: 'Monster not found' });
+
+    if (!updatedMonster) {
+      return res.status(404).json({ message: 'Monster not found' });
+    }
+
     res.status(200).json(updatedMonster);
   } catch (error) {
-    res.status(400).json({ message: 'Error updating monster' });
+    res.status(500).json({ message: 'Error updating monster', error: error.message });
   }
 };
+
 
 
 exports.deleteMonster = async (req, res) => {

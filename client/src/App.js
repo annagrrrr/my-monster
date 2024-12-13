@@ -4,8 +4,10 @@ import './App.css';
 
 import MonsterList from './components/MonsterList';
 import MonsterForm from './components/MonsterForm';
+import MonsterEdit from './components/MonsterEdit';
 import Navbar from './components/Navbar';
 import BattlePage from './components/BattlePage';
+
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
           <Route path="/" element={<MonsterList />} />
           <Route path="/create" element={<MonsterForm />} />
           <Route path="/battle/:id" element={<BattlePage />} />
-
+          <Route path="/edit/:id" element={<MonsterEdit />} />
         </Routes>
       </div>
     </Router> 

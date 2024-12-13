@@ -3,9 +3,10 @@ import { getMonsters, deleteMonster } from '../services/api';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
-
 const MonsterList = () => {
   const [monsters, setMonsters] = useState([]);
+  const [filteredMonsters, setFilteredMonsters] = useState([]);
+  const [filter, setFilter] = useState({ name: '', rarity: '', acquired: '' });
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const MonsterList = () => {
         const data = await getMonsters();
         const sortedMonsters = data.sort((a, b) => b.powerLevel - a.powerLevel);
         setMonsters(sortedMonsters);
+        setFilteredMonsters(sortedMonsters);
       } catch (err) {
         setError('Ошибка загрузки монстров');
         console.error('Error fetching monsters:', err);
@@ -27,9 +29,28 @@ const MonsterList = () => {
     try {
       await deleteMonster(id);
       setMonsters(monsters.filter((monster) => monster._id !== id));
+      setFilteredMonsters(filteredMonsters.filter((monster) => monster._id !== id));
     } catch (err) {
       console.error('Ошибка удаления монстра:', err);
     }
+  };
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilter((prev) => ({ ...prev, [name]: value }));
+
+    const filtered = monsters.filter((monster) => {
+      const matchesName = monster.name.toLowerCase().includes(value.toLowerCase());
+      const matchesRarity = name === 'rarity' ? monster.rarity === value || value === '' : true;
+      const matchesAcquired =
+        name === 'acquired'
+          ? String(monster.acquired) === value || value === ''
+          : true;
+
+      return matchesName && matchesRarity && matchesAcquired;
+    });
+
+    setFilteredMonsters(filtered);
   };
 
   const getBackgroundColor = (rarity) => {
@@ -51,6 +72,16 @@ const MonsterList = () => {
     <div>
       <h2>Список монстров</h2>
       {error && <p>{error}</p>}
+      <div className="filter-form">
+        <input
+          type="text"
+          name="name"
+          placeholder="Поиск по имени"
+          value={filter.name}
+          onChange={handleFilterChange}
+          className="filter-input"
+        />
+      </div>
       <table>
         <thead>
           <tr>
@@ -62,16 +93,30 @@ const MonsterList = () => {
           </tr>
         </thead>
         <tbody>
-          {monsters.map((monster) => (
-            <tr key={monster._id} className="monster-row" style={{ backgroundColor: getBackgroundColor(monster.rarity) }}>
+          {filteredMonsters.map((monster) => (
+            <tr
+              key={monster._id}
+              className="monster-row"
+              style={{ backgroundColor: getBackgroundColor(monster.rarity) }}
+            >
               <td>{monster.name}</td>
               <td>{monster.description}</td>
               <td>{monster.rarity}</td>
               <td>{monster.powerLevel}</td>
               <td>
-                <button onClick={() => handleDelete(monster._id)} className="delete-button">Удалить</button>
+                <Link to={`/edit/${monster._id}`} className="edit-button">
+                  Редактировать
+                </Link>
+                <button
+                  onClick={() => handleDelete(monster._id)}
+                  className="delete-button"
+                >
+                  Удалить
+                </button>
                 {monster.acquired && (
-                  <Link to={`/battle/${monster._id}`} className="fight-button">Битва</Link>
+                  <Link to={`/battle/${monster._id}`} className="fight-button">
+                    Битва
+                  </Link>
                 )}
               </td>
             </tr>
